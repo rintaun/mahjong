@@ -39,7 +39,7 @@ public class Mahjong implements Runnable {
 	public final static int KYOKU_NAN_3 = 6;
 	/** 南四局 */
 	public final static int KYOKU_NAN_4 = 7;
-
+	
 	/** 局 */
 	private int m_kyoku;
 
@@ -107,6 +107,7 @@ public class Mahjong implements Runnable {
 		return m_players[m_kazeToPlayerIdx[a_kaze]].getSuteHaisCount();
 	}
 
+	
 	/**
 	 * コンストラクタ
 	 *
@@ -379,6 +380,7 @@ public class Mahjong implements Runnable {
 
 		// UIイベント（配牌）を発行する。
 		//m_view.event(EventId.HAIPAI, mFromKaze, mToKaze);
+		
 		m_view.event(EventId.START_KYOKU, m_kazeFrom, m_kazeTo);
 
 		EventId retEid;
@@ -570,6 +572,7 @@ public class Mahjong implements Runnable {
 				// リーチ棒の数を初期化する。
 				m_reachbou = 0;
 
+				
 				// UIイベント（ツモあがり）を発行する。
 				m_view.event(retEid, m_kazeFrom, m_kazeTo);
 
@@ -609,7 +612,7 @@ public class Mahjong implements Runnable {
 
 				// リーチ棒の数を初期化する。
 				m_reachbou = 0;
-
+				
 				// UIイベント（ロン）を発行する。
 				m_view.event(retEid, m_kazeFrom, m_kazeTo);
 
@@ -755,6 +758,7 @@ public class Mahjong implements Runnable {
 
 		//m_tsumoHai = new Hai(13, true);
 		// UIイベント（ツモ）を発行する。
+		
 		m_view.event(EventId.TSUMO, m_kazeFrom, m_kazeFrom);
 
 		// イベント（ツモ）を発行する。
@@ -764,7 +768,7 @@ public class Mahjong implements Runnable {
 		m_isTenhou = false;
 
 		m_isTsumo = false;
-
+		
 		// UIイベント（進行待ち）を発行する。
 		m_view.event(EventId.UI_WAIT_PROGRESS, m_kazeFrom, m_kazeFrom);
 
@@ -787,7 +791,7 @@ public class Mahjong implements Runnable {
 
 			// イベントを通知する。
 			retEid = notifyEvent(EventId.ANKAN, m_kazeFrom, m_kazeFrom);
-
+			
 			// UIイベント（進行待ち）を発行する。
 			m_view.event(EventId.UI_WAIT_PROGRESS, KAZE_NONE, KAZE_NONE);
 
@@ -807,6 +811,7 @@ public class Mahjong implements Runnable {
 
 			// 理牌の間をとる。
 			m_infoUi.setSutehaiIdx(sutehaiIdx);
+			
 			m_view.event(EventId.UI_WAIT_RIHAI, m_kazeFrom, m_kazeFrom);
 
 			if (sutehaiIdx >= activePlayer.getTehai().getJyunTehaiLength()) {// ツモ切り
@@ -836,6 +841,7 @@ public class Mahjong implements Runnable {
 				activePlayer.setDoubleReach(true);
 			}
 			activePlayer.setSuteHaisCount(m_suteHaisCount);
+			
 			m_view.event(EventId.UI_WAIT_RIHAI, m_kazeFrom, m_kazeFrom);
 
 			if (sutehaiIdx >= activePlayer.getTehai().getJyunTehaiLength()) {// ツモ切り
@@ -881,6 +887,7 @@ public class Mahjong implements Runnable {
 	 */
 	private EventId notifyEvent(EventId a_eventId, int a_kazeFrom, int a_kazeTo) {
 		// UIイベントを発行する。
+		
 		m_view.event(a_eventId, a_kazeFrom, a_kazeTo);
 
 		EventId ret = EventId.NAGASHI;
@@ -1054,6 +1061,7 @@ public class Mahjong implements Runnable {
 				ret = notifyEvent(EventId.DAIMINKAN, this.m_kazeFrom, this.m_kazeTo);
 
 				// UIイベント（進行待ち）を発行する。
+				
 				m_view.event(EventId.UI_WAIT_PROGRESS, KAZE_NONE, KAZE_NONE);
 
 				// ツモ牌を取得する。
@@ -1264,6 +1272,7 @@ public class Mahjong implements Runnable {
 	}
 
 	public void postUiEvent(EventId a_eventId, int a_kazeFrom, int a_kazeTo) {
+		
 		m_view.event(a_eventId, a_kazeFrom, a_kazeTo);
 	}
 }

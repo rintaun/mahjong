@@ -3,36 +3,77 @@ package jp.sourceforge.andjong;
 import jp.sourceforge.andjong.mahjong.Mahjong;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 
 public class Game extends Activity {
 	private static final String TAG = "Andjong";
 
 	private AndjongView mAndjongView;
-
+	private LinearLayout root;
+	
 	private Mahjong mMahjong;
-
+	
+	private Thread mMahjongThread;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Log.d(TAG, "onCreate");
 
-		// ƒ^ƒCƒgƒ‹‚ğ•\¦‚µ‚È‚¢‚æ‚¤‚É‚·‚éB
+		// ã‚¿ã‚¤ãƒˆãƒ«ã‚’è¡¨ç¤ºã—ãªã„ã‚ˆã†ã«ã™ã‚‹ã€‚
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-		// ƒtƒ‹ƒXƒNƒŠ[ƒ“‚É‚·‚éB
+		// ãƒ•ãƒ«ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ã«ã™ã‚‹ã€‚
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-		// View‚ğì¬‚·‚éB
+		root = new LinearLayout(this);
+		root.setBackgroundColor(Color.BLACK);
+		// Viewã‚’ä½œæˆã™ã‚‹ã€‚
 		mAndjongView = new AndjongView(this);
-		setContentView(mAndjongView);
+		root.addView(mAndjongView);
+		setContentView(root);
 		mAndjongView.requestFocus();
-
-		// ƒQ[ƒ€‚ğŠJn‚·‚éB
+		// ã‚²ãƒ¼ãƒ ã‚’é–‹å§‹ã™ã‚‹ã€‚
 		mMahjong = new Mahjong(mAndjongView);
-		new Thread(mMahjong).start();
+		mMahjongThread = new Thread(mMahjong);
+		mMahjongThread.start();
+	}
+	
+	private boolean first = true;
+	
+	@Override
+	public void onWindowFocusChanged(boolean hasFocus) {
+		super.onWindowFocusChanged(hasFocus);
+		if(hasFocus && first){
+			first = false;
+			LayoutParams lp = mAndjongView.getLayoutParams();
+			int rootW = root.getWidth();
+			int rootH = root.getHeight();
+			
+			if(rootW / 3 * 2 > rootH){
+				//ç”»é¢è¿‡å®½çš„åœºåˆ
+				lp.height = lp.MATCH_PARENT;
+				lp.width = rootH/2*3;
+			}
+			else{
+				//ç”»é¢è¿‡çª„çš„åœºåˆ
+				lp.width = lp.MATCH_PARENT;
+				lp.height = rootW/3*2;
+			}
+			
+			root.setGravity(Gravity.CENTER);
+			
+		}
+	}
+	@Override
+	protected void onDestroy() {
+		mMahjongThread.interrupt();
+		super.onDestroy();
 	}
 }

@@ -14,6 +14,7 @@ public class Settings extends PreferenceActivity {
 	private static final String OPT_HINTS = "hints";
 	private static final boolean OPT_HINTS_DEF = true;
 
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
