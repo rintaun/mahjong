@@ -24,7 +24,7 @@
 	<string name="space">" "</string>
 	<string name="multi">x</string>
 
-	<string name="button_menu">Menu</string>
+	<string name="button_menu">行动</string>
 	<string name="button_reach">立直</string>
 	<string name="button_ron">荣和</string>
 	<string name="button_tsumo">自摸和</string>
@@ -32,7 +32,7 @@
 	<string name="button_chii">吃</string>
 	<string name="button_kan">杠</string>
 
-	<string name="han">翻</string>
+	<string name="han">番</string>
 	<string name="fu">符</string>
 	<string name="ten">点</string>
 
@@ -54,20 +54,20 @@
 	<string name="yaku_reach">立直</string>
 	<string name="yaku_ippatu">一发</string>
 	<string name="yaku_tumo">门前清自摸和</string>
-	<string name="yaku_doubleton">东风东</string>
-	<string name="yaku_ton">东</string>
-	<string name="yaku_doublenan">南风南</string>
-	<string name="yaku_nan">南</string>
-	<string name="yaku_sya">西</string>
-	<string name="yaku_pei">北</string>
-	<string name="yaku_haku">白</string>
-	<string name="yaku_hatu">发</string>
-	<string name="yaku_cyun">中</string>
+	<string name="yaku_doubleton">场风</string>
+	<string name="yaku_ton">自风</string>
+	<string name="yaku_doublenan">场风</string>
+	<string name="yaku_nan">自风</string>
+	<string name="yaku_sya">自风</string>
+	<string name="yaku_pei">自风</string>
+	<string name="yaku_haku">役牌</string>
+	<string name="yaku_hatu">役牌</string>
+	<string name="yaku_cyun">役牌</string>
 	<string name="yaku_haitei">海底捞月</string>
 	<string name="yaku_houtei">河底捞鱼</string>
 	<string name="yaku_rinsyan">岭上开花</string>
-	<string name="yaku_cyankan">抢杠</string>
-	<string name="yaku_doublereach">双立直</string>
+	<string name="yaku_cyankan">抢杠和</string>
+	<string name="yaku_doublereach">两立直</string>
 	<string name="yaku_teetoitu">七对子</string>
 	<string name="yaku_cyanta">混全带么九</string>
 	<string name="yaku_ikkituukan">一气通贯</string>
@@ -94,17 +94,24 @@
 	<string name="yaku_kokushi">国士无双</string>
 	<string name="yaku_tenhou">天和</string>
 	<string name="yaku_tihou">地和</string>
-	<string name="yaku_dora">悬赏牌</string>
+	<string name="yaku_dora">宝牌</string>
 	<string name="yaku_nagashimangan">流局满贯</string>
 
 	<string name="about_title">关于 Andjong</string>
 	<string name="about_text">\
 Andjong 是一个开源的麻将游戏。\n
 ･支持英文\n
-･仅支持 320X480 分辨率\n
+･仅支持 320X480 画面分辨率\n
 ･触摸屏幕的下半区域或按下左右键来选择牌。\n
 ･触摸屏幕的上半区域或按下确认键来打出牌。\n
 ･可通过触摸屏幕上显示的的菜单来执行可用动作。\n
 ･当出现结果页面（流局、和牌等）时触摸屏幕或按确认键来跳过画面。\n 
 </string>
+	<string name="rounds_tonpuu">东风</string>
+	<string name="rounds_hanchan">半庄</string>
+	<string name="settings_title">Andjong 设置</string>
+	<string name="settings_kuitan">食断</string>
+	<string name="hints_title">赤宝牌</string>
+	<string name="settings_kyokusuu">场次</string>
+	
 </resources>
